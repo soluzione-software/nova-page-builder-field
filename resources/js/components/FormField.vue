@@ -12,6 +12,11 @@
     import pluginExport from 'grapesjs-plugin-export';
     // import pluginAviary from 'grapesjs-aviary';
     // import pluginFilestack from 'grapesjs-plugin-filestack';
+    import pluginSwiperSlider from 'grapesjs-swiper-slider';
+    import pluginCustomCode from 'grapesjs-custom-code';
+    import pluginHeader from 'grapesjs-plugin-header';
+    import pluginTabs from 'grapesjs-tabs';
+    import tUIImageEditor from 'grapesjs-tui-image-editor';
     import custom from '../plugins/custom';
     import { FormField, HandlesValidationErrors } from 'laravel-nova'
 
@@ -88,8 +93,35 @@
                     // pluginFilestack,
                     pluginForms,
                     pluginNavbar,
+                    pluginSwiperSlider,
+                    pluginCustomCode,
+                    pluginHeader,
+                    pluginTabs,
+                    tUIImageEditor,
                     custom
                 ],
+                pluginsOpts: {
+                    [basicBlocks]: {
+                        flexGrid: true,
+                    },
+                    [pluginSwiperSlider]: {
+                        sliderProps: {
+                            scrollbar: false,
+                            style: {
+                                'height': '100%',
+                                'min-height': '50px',
+                                'overflow': 'hidden'
+                            }
+                        },
+                        // Default slides
+                        slideEls: `
+                          <div class="swiper-slide" id="swiper-slide-1"><div style="height: 100%; background-color: rgba(0,0,0,0.1);"><p>Slide 1</p></div></div>
+                          <div class="swiper-slide" id="swiper-slide-2"><div style="height: 100%; background-color: rgba(0,0,0,0.1);"><p>Slide 2</p></div></div>
+                          <div class="swiper-slide" id="swiper-slide-3"><div style="height: 100%; background-color: rgba(0,0,0,0.1);"><p>Slide 3</p></div></div>
+                        `,
+                    },
+                    [pluginForms]: { /* options */ }
+                },
                 styleManager : {
                     sectors: [
                         {
@@ -108,6 +140,10 @@
                             name: 'Decorations',
                             open: false,
                             buildProps: ['border-radius-c', 'background-color', 'border-radius', 'border', 'box-shadow', 'background'],
+                        },{
+                            name: 'Extra',
+                            open: false,
+                            buildProps: ['transition', 'perspective', 'transform'],
                         }
                     ],
                 },

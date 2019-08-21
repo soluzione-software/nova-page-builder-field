@@ -127,6 +127,13 @@ export default grapesjs.plugins.add('custom', function (editor, opts) {
         attributes: {class: 'fa fa-quote-right'}
     });
 
+    bm.add('f-button', {
+        label: 'Button',
+        category: 'Basic',
+        content: '<button>Button</button>',
+        attributes: { class: 'gjs-fonts gjs-f-button' },
+    });
+
     bm.add('section-hero', {
         label: 'Hero section',
         category: 'Sections',
@@ -370,17 +377,17 @@ export default grapesjs.plugins.add('custom', function (editor, opts) {
 `,
         attributes: {class: 'gjs-fonts gjs-f-h1p'}
     });
-    //
-    // bm.add('section-typography', {
-    //     label: 'Text section',
-    //     category: 'Sections',
-    //     content: `<section class="bdg-sect">
-    //   <h1 class="heading">Insert title here</h1>
-    //   <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-    //   </section>`,
-    //     attributes: {class: 'gjs-fonts gjs-f-h1p'}
-    // });
-    //
+
+    bm.add('section-typography', {
+        label: 'Text section',
+        category: 'Sections',
+        content: `<section class="bdg-sect">
+      <h1 class="heading">Insert title here</h1>
+      <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+      </section>`,
+        attributes: {class: 'gjs-fonts gjs-f-h1p'}
+    });
+
     bm.add('section-cards', {
         label: 'Cards',
         category: 'Sections',
