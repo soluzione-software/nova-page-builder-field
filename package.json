@@ -1,28 +1,36 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "cross-env": "^5.0.0",
-        "laravel-mix": "^1.0",
-        "laravel-nova": "^1.0"
-    },
-    "dependencies": {
-        "grapesjs": "0.x",
-        "grapesjs-aviary": "^0.1.2",
-        "grapesjs-blocks-basic": "^0.1.7",
-        "grapesjs-component-countdown": "^0.1.2",
-        "grapesjs-navbar": "^0.1.5",
-        "grapesjs-plugin-export": "^0.1.5",
-        "grapesjs-plugin-filestack": "^0.1.1",
-        "grapesjs-plugin-forms": "^0.3.5",
-        "vue": "^2.5.0"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.0",
+    "laravel-mix": "^1.0",
+    "laravel-nova": "^1.0"
+  },
+  "dependencies": {
+    "ckeditor": "^4.12.1",
+    "grapesjs": "0.x",
+    "grapesjs-aviary": "^0.1.2",
+    "grapesjs-blocks-basic": "^0.1.7",
+    "grapesjs-component-countdown": "^0.1.2",
+    "grapesjs-custom-code": "^0.1.2",
+    "grapesjs-lory-slider": "^0.1.5",
+    "grapesjs-navbar": "^0.1.5",
+    "grapesjs-plugin-ckeditor": "0.0.9",
+    "grapesjs-plugin-export": "^0.1.5",
+    "grapesjs-plugin-filestack": "^0.1.1",
+    "grapesjs-plugin-forms": "^0.3.5",
+    "grapesjs-plugin-header": "latest",
+    "grapesjs-swiper-slider": "0.0.5",
+    "grapesjs-tabs": "^0.1.2",
+    "grapesjs-tui-image-editor": "^0.1.2",
+    "vue": "^2.5.0"
+  }
 }

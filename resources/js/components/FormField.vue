@@ -40,10 +40,29 @@
              * Fill the given FormData object with the field's internal value.
              */
             fill(formData) {
-                let newValue = '<style>' + this.editor.getCss() + '</style>'
-                                + this.editor.getHtml()
-                                + '<script>' + this.editor.getJs() + '<\/script>';
-                formData.append(this.field.attribute, newValue || '')
+                let js_rx = /<script[^]*<\/script>/gm;
+                let empty_js_rx = /<script[^>]*><\/script>/g;
+
+                let html_js = this.editor.getHtml();
+                let html = html_js.replace(js_rx, '');
+                let css = this.editor.getCss();
+                if (css.length > 0){
+                    css = '<style>' + css + '</style>';
+                }
+                let js = '<script>' + this.editor.getJs() + '<\/script>';
+
+                let m;
+                do {
+                    m = js_rx.exec(html_js);
+                    if (m) {
+                        js += m[0];
+                    }
+                } while (m);
+
+                // remove empty script tags
+                js = js.replace(empty_js_rx, '');
+
+                formData.append(this.field.attribute, JSON.stringify({html: html, css: css, js: js}));
             },
 
             /**
