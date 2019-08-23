@@ -135,7 +135,7 @@
                         },{
                             name: 'Typography',
                             open: false,
-                            buildProps: ['font-family', 'font-size', 'font-weight', 'letter-spacing', 'color', 'line-height', 'text-shadow'],
+                            buildProps: ['font-family', 'font-size', 'text-align', 'font-weight', 'letter-spacing', 'color', 'line-height', 'text-shadow'],
                         },{
                             name: 'Decorations',
                             open: false,
