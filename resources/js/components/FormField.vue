@@ -77,6 +77,13 @@
                 this.value = value;
                 this.editor.setComponents(value);
             },
+
+            loadAssets() {
+                Nova.request().get(this.getUrl)
+                    .then((response) => {
+                        this.editor.AssetManager.add(response.data);
+                    });
+            },
         },
 
         mounted() {
@@ -147,9 +154,105 @@
                         }
                     ],
                 },
+                assetManager: {
+                    // Default assets
+                    // eg. [
+                    //  'https://...image1.png',
+                    //  'https://...image2.png',
+                    //  {type: 'image', src: 'https://...image3.png', someOtherCustomProp: 1},
+                    //  ..
+                    // ]
+                    assets: [],
+
+                    // Content to add where there is no assets to show
+                    // eg. 'No <b>assets</b> here, drag to upload'
+                    noAssets: '',
+
+                    // Upload endpoint, set `false` to disable upload
+                    // upload: 'https://endpoint/upload/assets',
+                    // upload: false,
+                    upload: this.field.storeAssets ? this.postUrl : false,
+
+                    // The name used in POST to pass uploaded files
+                    uploadName: 'file',
+
+                    // Custom headers to pass with the upload request
+                    headers: {},
+
+                    // Custom parameters to pass with the upload request, eg. csrf token
+                    params: {
+                        '_token': this.field.csrf_token,
+                    },
+
+                    // The credentials setting for the upload request, eg. 'include', 'omit'
+                    credentials: 'include',
+
+                    // Allow uploading multiple files per request.
+                    // If disabled filename will not have '[]' appended
+                    multiUpload: false,
+
+                    // If true, tries to add automatically uploaded assets.
+                    // To make it work the server should respond with a JSON containing assets
+                    // in a data key, eg:
+                    // {
+                    //  data: [
+                    //    'https://.../image.png',
+                    //    ...
+                    //    {src: 'https://.../image2.png'},
+                    //    ...
+                    //  ]
+                    // }
+                    autoAdd: 1,
+
+                    // Text on upload input
+                    uploadText: 'Drop files here or click to upload',
+
+                    // Label for the add button
+                    addBtnText: 'Add image',
+
+                    // Custom uploadFile function
+                    // @example
+                    // uploadFile: (e) => {
+                    //   var files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+                    //   // ...send somewhere
+                    // }
+                    uploadFile: '',
+
+                    // Handle the image url submit from the built-in 'Add image' form
+                    // @example
+                    // handleAdd: (textFromInput) => {
+                      // some check...
+                    //   editor.AssetManager.add(textFromInput);
+                    // }
+                    handleAdd: '',
+
+                    // Enable an upload dropzone on the entire editor (not document) when dragging
+                    // files over it
+                    // dropzone: 1, NOTE: breaks everything
+
+                    // Open the asset manager once files are been dropped via the dropzone
+                    openAssetsOnDrop: 1,
+
+                    // Any dropzone content to append inside dropzone element
+                    dropzoneContent: '',
+
+                    // Default title for the asset manager modal
+                    modalTitle: 'Select Image',
+                }
             });
 
             this.editor.setComponents(this.value);
+
+            this.loadAssets();
+        },
+
+        computed: {
+            getUrl() {
+                return `/nova-vendor/page-builder-field/${this.resourceName}/${this.field.attribute}`;
+            },
+            postUrl() {
+                return `/nova-vendor/page-builder-field/${this.resourceName}/${this.field.attribute}`;
+            },
         }
     }
 </script>

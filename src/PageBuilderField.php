@@ -22,6 +22,27 @@ class PageBuilderField extends Field
      */
     public $component = 'page-builder-field';
 
+    /**
+     * The name of the disk the file uses by default.
+     *
+     * @var string
+     */
+    public $disk = 'public';
+
+    /**
+     * The file storage path.
+     *
+     * @var string
+     */
+    public $storagePath = '/';
+
+    /**
+     * If store assets is enabled
+     *
+     * @var string
+     */
+    public $storeAssets = true;
+
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback);
@@ -43,6 +64,27 @@ class PageBuilderField extends Field
     public function js($attribute)
     {
         $this->jsAttribute = $attribute;
+        return $this;
+    }
+
+    public function storeAssets(bool $store = true)
+    {
+        $this->storeAssets = $store;
+
+        return $this;
+    }
+
+    public function disk(string $name)
+    {
+        $this->disk = $name;
+
+        return $this;
+    }
+
+    public function path(string $path)
+    {
+        $this->storagePath = $path;
+
         return $this;
     }
 
@@ -108,6 +150,8 @@ class PageBuilderField extends Field
     {
         return array_merge(parent::jsonSerialize(), [
             'shouldShow' => $this->shouldBeExpanded(),
+            'storeAssets' => $this->storeAssets,
+            'csrf_token' => csrf_token(),
         ]);
     }
 

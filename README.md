@@ -1,3 +1,5 @@
+# WARNING: this README is outdated
+
 # Nova PageBuilder Field.
 
 This field allows you to build custom styled web pages, using https://github.com/artf/grapesjs
